@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
-import Home from './components/Home';
 
-import GlobalStyle from './styles/global';
+import GlobalStyle, {
+  OuterContainer,
+  Container,
+  Title,
+  Separator,
+} from './styles';
 
-const url = 'https://mymoney-romluc.firebaseio.com/movimentacoes.json';
+const url = 'https://mymoney-romluc.firebaseio.com/movimentacoes/2020-05.json';
 
 const App = () => {
   const [data, setData] = useState({
     loading: true,
     data: {},
   });
+
   useEffect(() => {
     axios.get(url).then((res) => {
       setData({
@@ -29,8 +34,13 @@ const App = () => {
         />
       </Helmet>
       <GlobalStyle />
-      <Home />
-      {JSON.stringify(data)}
+      <OuterContainer>
+        <Container>
+          <Title fontSize={2}>My Money</Title>
+          <Separator />
+          <pre>{JSON.stringify(data, null, 2)}</pre>
+        </Container>
+      </OuterContainer>
     </>
   );
 };
