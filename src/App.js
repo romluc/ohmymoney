@@ -4,14 +4,10 @@ import Loading from './components/Loading';
 
 import Rest from './Rest';
 
-import GlobalStyle, {
-  OuterContainer,
-  Container,
-  Title,
-  Separator,
-} from './styles';
+import GlobalStyle, { Container } from './styles';
+import Header from './elements/Header';
 
-const url = 'https://mymoney-romluc.firebaseio.com/movimentacoes/2020-05.json';
+// const url = 'https://mymoney-romluc.firebaseio.com/movimentacoes/2020-05.json';
 const baseURL = 'https://mymoney-romluc.firebaseio.com/';
 const { useGet, usePost } = Rest(baseURL);
 
@@ -33,18 +29,15 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <OuterContainer>
-        <Container>
-          <Title fontSize={2}>Oh My Money!</Title>
-          <Separator />
-          {data.loading && <Loading />}
-          <button onClick={doRemove}>Delete</button>
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-          <button onClick={saveNew}>Save</button>
-          <pre>{JSON.stringify(postData)}</pre>
-          <pre>{JSON.stringify(deleteData)}</pre>
-        </Container>
-      </OuterContainer>
+      <Header />
+      <Container>
+        {data.loading && <Loading />}
+        <button onClick={doRemove}>Delete</button>
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+        <button onClick={saveNew}>Save</button>
+        <pre>{JSON.stringify(postData)}</pre>
+        <pre>{JSON.stringify(deleteData)}</pre>
+      </Container>
     </>
   );
 };
