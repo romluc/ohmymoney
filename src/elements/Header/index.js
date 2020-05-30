@@ -1,12 +1,11 @@
 import React from 'react';
-import { Nav, NavHeader, Brand } from './styles.js';
 
 const Header = () => (
-  <Nav>
-    <NavHeader>
-      <Brand fontSize={32}>Oh my money!</Brand>
-    </NavHeader>
-  </Nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/">
+      Oh my money
+    </a>
+  </nav>
 );
 
 export default Header;
