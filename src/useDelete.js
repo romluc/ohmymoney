@@ -1,10 +1,5 @@
-import { useReducer, useEffect } from 'react';
+import { useReducer } from 'react';
 import axios from 'axios';
-
-let INITIAL_STATE = {
-  loading: true,
-  data: {},
-};
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -24,16 +19,20 @@ const reducer = (state, action) => {
   }
 };
 
-const useGet = (url) => {
-  const [data, dispatch] = useReducer(reducer, INITIAL_STATE);
-  useEffect(() => {
+const useDelete = (url) => {
+  const [data, dispatch] = useReducer(reducer, {
+    loading: true,
+    data: {},
+  });
+  const remove = (url) => {
     dispatch({ type: 'REQUEST' });
-    axios.get(url).then((res) => {
-      dispatch({ type: 'SUCCESS', data: res.data });
+    axios.delete(url).then(() => {
+      dispatch({
+        type: 'SUCCESS',
+      });
     });
-  }, [url]);
-
-  return data;
+  };
+  return [data, remove];
 };
 
-export default useGet;
+export default useDelete;

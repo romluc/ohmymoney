@@ -2,8 +2,6 @@ import { useReducer } from 'react';
 import axios from 'axios';
 
 const reducer = (state, action) => {
-  console.log('state', state, 'action', action);
-
   switch (action.type) {
     case 'REQUEST':
       return {
@@ -31,7 +29,6 @@ const usePost = (url) => {
     axios.post(url, data).then((res) => {
       dispatch({
         type: 'SUCCESS',
-        data: res.data,
       });
     });
   };
