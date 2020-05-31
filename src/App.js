@@ -1,14 +1,10 @@
 import React from 'react';
-// import useDelete from './useDelete';
-import Loading from './components/Loading';
-
 import Rest from './Rest';
-
+import Months from './Months';
 import Header from './elements/Header';
 
-// const url = 'https://mymoney-romluc.firebaseio.com/movimentacoes/2020-05.json';
-const baseURL = 'https://mymoney-romluc.firebaseio.com/';
-const { useGet } = Rest(baseURL);
+const baseURL = 'https://mymoney-romluc.com.firebase.io/';
+const { useGet, usePost, useDelete } = Rest(baseURL);
 
 const App = () => {
   // const data = useGet(`movimentacoes/2020-05`);
@@ -29,26 +25,19 @@ const App = () => {
   return (
     <>
       <Header />
-      {/* <Container> */}
-      <h2>Add Month</h2>
-      <select>
-        <option value="2019">2019</option>
-        <option value="2020">2020</option>
-      </select>
-      <select>
-        <option value="01">01</option>
-        <option value="02">02</option>
-      </select>
-      <button className="btn btn-secondary">Add Month</button>
-      {data.loading && <Loading />}
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-      <button className="btn btn-secondary" onClick={saveNew}>
-        Save
-      </button>
-      <button className="btn btn-secondary" onClick={doRemove}>
-        Delete
-      </button>
-      {/* </Container> */}
+      <div className="container mt-4">
+        <label htmlFor="addMonth">Add Month</label>
+        <select className="form-group ml-4">
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+        </select>
+        <select className="form-group mr-4">
+          <option value="01">01</option>
+          <option value="02">02</option>
+        </select>
+        <button className="btn btn-secondary btn-sm">Add Month</button>
+      </div>
+      <Months />
     </>
   );
 };

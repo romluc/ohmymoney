@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Header = () => (
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/">
+  <nav className="navbar navbar-expand-lg nav–bar-dark bg-primary">
+    <a className="navbar-brand" href="/">
       Oh my money
     </a>
   </nav>
