@@ -1,33 +1,17 @@
 import React from 'react';
-import Rest from './Rest';
-import Months from './Months';
-import AddMonth from './AddMonth';
-import Header from './elements/Header';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-const baseURL = 'https://mymoney-romluc.com.firebase.io/';
-const { useGet, usePost, useDelete } = Rest(baseURL);
+import Header from './elements/Header';
+import Home from './pages/Home';
+import Transactions from './pages/Transactions';
 
 const App = () => {
-  // const data = useGet(`2020-05`);
-  // const [postData, post] = usePost(`movimentacoes/2020-05`);
-  // const [deleteData, remove] = useDelete();
-
-  const saveNew = (data) => {
-    // post({ valor: 12, descricao: 'agua' });
-  };
-
-  const doRemove = () => {
-    // remove(
-    //   'https://mymoney-romluc.firebaseio.com/movimentacoes/2020-05/-M8XDCpJ9RMjmzhJzkrQ.json'
-    // );
-  };
-
   return (
-    <>
+    <Router>
       <Header />
-      <AddMonth />
-      <Months />
-    </>
+      <Route path="/" exact component={Home} />
+      <Route path="/transactions/:data" component={Transactions} />
+    </Router>
   );
 };
 
