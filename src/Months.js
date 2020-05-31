@@ -6,7 +6,7 @@ const baseURL = 'https://mymoney-romluc.firebaseio.com/';
 const { useGet } = Rest(baseURL);
 
 const Months = () => {
-  const data = useGet('movimentacoes/2020-05');
+  const data = useGet('transactions/2020-05');
   if (data.loading) {
     return <Loading />;
   }
