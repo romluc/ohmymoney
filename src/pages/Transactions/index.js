@@ -18,14 +18,23 @@ const Transactions = ({ match }) => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(data.data).map((transaction) => {
-            return (
-              <tr key={data.data[transaction]}>
-                <td>{data.data[transaction].description}</td>
-                <td>{data.data[transaction].value}</td>
-              </tr>
-            );
-          })}
+          {data.data &&
+            Object.keys(data.data).map((transaction) => {
+              return (
+                <tr key={data.data[transaction]}>
+                  <td>{data.data[transaction].description}</td>
+                  <td>{data.data[transaction].value}</td>
+                </tr>
+              );
+            })}
+          <tr>
+            <td>
+              <input type="text" />
+            </td>
+            <td>
+              <input type="text" />
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
