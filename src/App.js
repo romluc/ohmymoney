@@ -10,7 +10,7 @@ const App = () => {
     <Router>
       <Header />
       <Route path="/" exact component={Home} />
-      <Route path="/transactions/:data" component={Transactions} />
+      <Route path="/transactions/:date" component={Transactions} />
     </Router>
   );
 };

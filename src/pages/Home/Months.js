@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Loading from '../../elements/Loading';
-import Rest from '../../Rest';
+import Rest from '../../utils/Rest';
 
 const baseURL = 'https://mymoney-romluc.firebaseio.com/';
 const { useGet } = Rest(baseURL);
@@ -27,19 +27,20 @@ const Months = () => {
             </tr>
           </thead>
           <tbody>
-            {Object.keys(data.data).map((month) => {
-              return (
-                <tr key={month}>
-                  <td>
-                    <Link to={`/transactions/${month}`}>{month}</Link>
-                  </td>
-                  <td>{data.data[month].estimated_income}</td>
-                  <td>{data.data[month].income}</td>
-                  <td>{data.data[month].estimated_expenses}</td>
-                  <td>{data.data[month].expenses}</td>
-                </tr>
-              );
-            })}
+            {data.data &&
+              Object.keys(data.data).map((month) => {
+                return (
+                  <tr key={month}>
+                    <td>
+                      <Link to={`/transactions/${month}`}>{month}</Link>
+                    </td>
+                    <td>{data.data[month].estimated_income}</td>
+                    <td>{data.data[month].income}</td>
+                    <td>{data.data[month].estimated_expenses}</td>
+                    <td>{data.data[month].expenses}</td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </>

@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => (
   <nav className="navbar navbar-expand-lg nav–bar-dark bg-primary">
-    <a className="navbar-brand" href="/">
+    <Link className="navbar-brand" to="/">
       <span
         role="img"
         className="mr-2"
@@ -12,7 +13,7 @@ const Header = () => (
         💲
       </span>
       OhMyMoney
-    </a>
+    </Link>
   </nav>
 );
 
